@@ -22,7 +22,7 @@
  * Define Global Variables
  * 
 */
-const navBarList=document.getElementById("navbar__list");
+const navBar=document.getElementById("navbar__list");
 const sections=Array.from(document.querySelectorAll("section"));
 
 
@@ -33,14 +33,14 @@ const sections=Array.from(document.querySelectorAll("section"));
 */
 
 function createListItems(){
-    for (section of sections) {
+    for (sec of sections) {
         //create item to each one 
         listItem=document.createElement("li");
         //Add item text
-     listItem.innerHTML = `<li><a href="#${section.id}" data-nav="${section.id}" class="menu__link">${section.dataset.nav}</a></li>`;
+     listItem.innerHTML = `<li><a href="#${sec.id}" data-nav="${sec.id}" class="menu__link">${sec.dataset.nav}</a></li>`;
 
         //ADD listItem to navbarList
-        navBarList.appendChild(listItem);
+        navBar.appendChild(listItem);
 
     }
 }
