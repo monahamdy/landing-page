@@ -23,8 +23,7 @@
  * 
 */
 const navBar=document.getElementById("navbar__list");
-const sections=Array.from(document.querySelectorAll("section"));
-
+const sections=document.querySelectorAll("section");
 
 /**
  * End Global Variables
@@ -32,19 +31,22 @@ const sections=Array.from(document.querySelectorAll("section"));
  * 
 */
 
-function createListItems(){
-    for (sec of sections) {
-        //create item to each one 
-        listItem=document.createElement("li");
-        //Add item text
-     listItem.innerHTML = `<li><a href="#${sec.id}" data-nav="${sec.id}" class="menu__link">${sec.dataset.nav}</a></li>`;
+function createNavBarList() {
 
-        //ADD listItem to navbarList
-        navBar.appendChild(listItem);
+  // looping over all sections
+  for( section of sections){
+    listItem=document.createElement("li");
+    const secID = section.id;
+    const secDataNav = section.dataset.nav;
 
-    }
+    listItem.innerHTML = `<li><a class="menu__link" href="#${secID}">${secDataNav}</a></li>`;
+    navBar.appendChild(listItem);
+
+  }
+
 }
-createListItems();
+
+createNavBarList();
 // * End Helper Functions
 // * Begin Main Functions
 // * 
@@ -58,44 +60,79 @@ createListItems();
 */
    
 // Set sections as active
-window.onscroll = function() {
-	document.querySelectorAll("section").forEach(function(active) {
-    let activeLink = navBar.querySelector(`[data-nav=${active.id}]`);
-	if(active.getBoundingClientRect().top >= -300 && active.getBoundingClientRect().top <= 110){
 
-    active.classList.add("your-active-class");
-    activeLink.classList.add("active-link");
-
-    }
-    else{
-         active.classList.remove("your-active-class");
-         activeLink.classList.remove("active-link");
-    }
-	});
-}
 
 /**
  * End Main Functions
  * Begin Events
  * 
 */
-// Scroll to section on link click
+// detect element location relative to viewport
+//  the largest value that's less or equal to the number
+const offset = (section) => {
+  return Math.floor(section.getBoundingClientRect().top);
+};
 
-navBar.addEventListener("click", (event) => {
-    event.preventDefault();
-    if (event.target.dataset.nav) {
-      document
-        .getElementById(`${event.target.dataset.nav}`)
-        .scrollIntoView({ behavior:"smooth"});
-       setTimeout(() => {
-        location.hash = `${event.target.dataset.nav}`;
-      }, 150);
-    }
+// add the active class
+function add(conditional, section) {
+  if (conditional) {
+    section.classList.add('your-active-class');
+
+  };
+}
+
+// remove the active class
+function remove(section) {
+  section.classList.remove('your-active-class');
+
+}
+
+
+
+// function for activing sections 
+
+function secActive() {
+  sections.forEach(function (section) {
+    const elemOffset = offset(section);
+
+    viewport = () => elemOffset < 160 && elemOffset >= -150;
+
+    remove(section);
+    add(viewport(), section);
   });
+}
+
+window.addEventListener('scroll' , secActive);
+
+// Scroll to anchor ID using scrollTO event
+
+function scrollWindow() {
+
   
+   links = document.querySelectorAll('.navbar__menu a');
+   links.forEach(function (link) {
+
+      link.addEventListener('click', () => {
+        for (var i = 0; i < sec; i++) {
+          sec[i].addEventListener("click", secScroll(link));
+        }
+      });
+    });
+
+}
+
+scrollWindow();
+
+/**
+* End Main Functions
+* Begin Events
+* 
+*/
 
 
-// Build menu 
+
+
+
 
 
 
