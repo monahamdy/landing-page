@@ -67,67 +67,60 @@ createNavBarList();
  * Begin Events
  * 
 */
-// detect element location relative to viewport
-//  the largest value that's less or equal to the number
 const offset = (section) => {
-  return Math.floor(section.getBoundingClientRect().top);
+  return(section.getBoundingClientRect().top);
 };
 
 // add the active class
-function add(conditional, section) {
-  if (conditional) {
+function add(active, section) {
+  if (active) {
     section.classList.add('your-active-class');
-
   };
 }
-
 // remove the active class
 function remove(section) {
   section.classList.remove('your-active-class');
-
 }
-
-
-
 // function for activing sections 
-
 function secActive() {
   sections.forEach(function (section) {
-    const elemOffset = offset(section);
-
-    viewport = () => elemOffset < 160 && elemOffset >= -150;
-
+    const elem = offset(section);
+    inviewPort = function () {
+      return elem < 160 && elem >= -150;
+    };
     remove(section);
-    add(viewport(), section);
+    add(inviewPort(), section);
   });
 }
-
 window.addEventListener('scroll' , secActive);
 
-// Scroll to anchor ID using scrollTO event
-
-function scrollWindow() {
-
+// scroll window
+window.onscroll=() => {
   
-   links = document.querySelectorAll('.navbar__menu a');
-   links.forEach(function (link) {
-
-      link.addEventListener('click', () => {
-        for (var i = 0; i < sec; i++) {
-          sec[i].addEventListener("click", secScroll(link));
-        }
-      });
-    });
-
+  links = document.querySelectorAll('.navbar__menu a');
+  links.forEach(() => {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    SVGTextPositioningElement;
+    console.log(scrollTop);
+  });
+  // scrollWindow();
+  /**
+  * End Main Functions
+  * Begin Events
+  *
+  */
 }
 
-scrollWindow();
+// scrollWindow();
 
 /**
 * End Main Functions
 * Begin Events
 * 
 */
+
+
+
 
 
 
