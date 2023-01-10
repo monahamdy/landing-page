@@ -67,34 +67,33 @@ createNavBarList();
  * Begin Events
  * 
 */
-const offset = (section) => {
-  return(section.getBoundingClientRect().top);
-};
 
-// add the active class
-function add(active, section) {
-  if (active) {
-    section.classList.add('your-active-class');
-  };
-}
-// remove the active class
-function remove(section) {
-  section.classList.remove('your-active-class');
-}
-// function for activing sections 
-function secActive() {
-  sections.forEach(function (section) {
-    const elem = offset(section);
-    inviewPort = function () {
-      return elem < 160 && elem >= -150;
-    };
-    remove(section);
-    add(inviewPort(), section);
-  });
-}
-window.addEventListener('scroll' , secActive);
+const links = document.querySelectorAll(".navbar__menu a")
 
-// scroll window
+function activationSec(){
+  sections.forEach(section =>{
+    const elemTop = section.getBoundingClientRect().top;
+    if (elemTop > 0 && elemTop > 260) {
+      //add // add the active class
+      section.classList.add('your-active-class');
+    }
+    //loop over links  x
+    links.forEach (x =>{
+      if (x) {
+        //add // add the active class
+        x.classList.add('your-active-class');
+    }
+      else {
+      //remove active link
+      x.classList.remove('your-active-class');
+    }
+  })
+})
+}
+window.addEventListener('scroll' , activationSec);
+
+//scroll window 
+
 window.onscroll=() => {
   
   links = document.querySelectorAll('.navbar__menu a');
@@ -118,13 +117,6 @@ window.onscroll=() => {
 * Begin Events
 * 
 */
-
-
-
-
-
-
-
 
 
 
