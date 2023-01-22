@@ -24,6 +24,7 @@
 */
 const navBar=document.getElementById("navbar__list");
 const sections=document.querySelectorAll("section");
+const links = document.querySelectorAll(".navbar__menu a")
 
 /**
  * End Global Variables
@@ -68,7 +69,7 @@ createNavBarList();
  * 
 */
 
-const links = document.querySelectorAll(".navbar__menu a")
+// const links = document.querySelectorAll(".navbar__menu a")
 
 function activationSec(){
   sections.forEach(section =>{
@@ -91,24 +92,23 @@ function activationSec(){
 })
 }
 window.addEventListener('scroll' , activationSec);
-
 //scroll window 
 
-window.onscroll=() => {
+// window.onscroll=() => {
   
-  links = document.querySelectorAll('.navbar__menu a');
-  links.forEach(() => {
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    SVGTextPositioningElement;
-    console.log(scrollTop);
-  });
-  // scrollWindow();
-  /**
-  * End Main Functions
-  * Begin Events
-  *
-  */
-}
+//   links = document.querySelectorAll('.navbar__menu a');
+//   links.forEach(() => {
+//     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+//     SVGTextPositioningElement;
+//     console.log(scrollTop);
+//   });
+//   // scrollWindow();
+//   /**
+//   * End Main Functions
+//   * Begin Events
+//   *
+//   */
+// }
 
 // scrollWindow();
 
